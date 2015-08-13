@@ -30,7 +30,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="header__links">
+                    <div class="header__links hide-ls-sm-2">
                         <div class="header__link-list">
                             <div class="header__link-item">
                                 <a class="link" target="_blank" href="https://github.com/IPRIT/yandex-shri-2015-tablo">GitHub</a>
@@ -44,7 +44,7 @@
             <div class="body">
                 <div class="body__inner">
                     <div class="aero-header component-block">
-                        <h1 class="title title_size_large aero-table__title">Табло аэропорта Домодедово (Москва)</h1>
+                        <h1 class="title title_size_large title_size_normal-sm-1 title_size_small-sm-2 aero-table__title">Табло аэропорта Домодедово (Москва)</h1>
                         <div class="aero-table__flight-types">
                             <div class="checkbox-group checkbox-group_single-required aero-table__checkbox-buttons">
                                 <label class="checkbox-button checkbox-button_bound_left aero-table__checkbox-item checkbox-button_pressed" for="checkbox_departure">
@@ -62,211 +62,60 @@
                         <div class="aero-table__inner">
                             <table class="table aero-table__table">
                                 <tr class="aero-table__row aero-table__row_purpose_header">
-                                    <td class="aero-table__col aero-table__col_num_1 aero-table__col_purpose_title">Тип рейса</td>
-                                    <td class="aero-table__col aero-table__col_num_2 aero-table__col_purpose_title">Номер рейса</td>
-                                    <td class="aero-table__col aero-table__col_num_3 aero-table__col_purpose_title">Авиакомпания</td>
-                                    <td class="aero-table__col aero-table__col_num_4 aero-table__col_purpose_title">Логотип</td>
-                                    <td class="aero-table__col aero-table__col_num_5 aero-table__col_purpose_title">Тип самолета</td>
-                                    <td class="aero-table__col aero-table__col_num_6 aero-table__col_purpose_title">Аэропорт назначения</td>
-                                    <td class="aero-table__col aero-table__col_num_7 aero-table__col_purpose_title">Время</td>
-                                    <td class="aero-table__col aero-table__col_num_8 aero-table__col_purpose_title">Статус</td>
-                                    <td class="aero-table__col aero-table__col_num_9 aero-table__col_purpose_title">Примечание</td>
+                                    <td class="aero-table__col aero-table__col_purpose_title hide-ls-md-2">Тип рейса</td>
+                                    <td class="aero-table__col aero-table__col_purpose_title">
+                                        <span class="hide-ls-md-2">Номер рейса</span>
+                                        <span title="Номер рейса" class="show-ls-md-2">Рейс</span>
+                                    </td>
+                                    <td class="aero-table__col aero-table__col_purpose_title hide-ls-sm-1">
+                                        <span class="hide-ls-md-2">Авиакомпания</span>
+                                        <span class="show-ls-md-2">Компания</span>
+                                    </td>
+                                    <td class="aero-table__col aero-table__col_purpose_title">
+                                        <span class="hide-ls-md-2">Тип самолета</span>
+                                        <span class="show-ls-md-2 hide-ls-sm-2">Самолет</span>
+                                        <span class="show-ls-sm-2">Судно</span>
+                                    </td>
+                                    <td class="aero-table__col aero-table__col_purpose_title hide-ls-sm-1">
+                                        <span class="hide-ls-md-2">Аэропорт назначения</span>
+                                        <span class="show-ls-md-2">Назначение</span>
+                                    </td>
+                                    <td class="aero-table__col aero-table__col_purpose_title checkbox-button checkbox-button_pressed">
+                                        <span class="hide-ls-lg-1">Плановое время вылета или прилёта</span>
+                                        <span class="show-ls-lg-1 hide-ls-md-1">Плановое время</span>
+                                        <span class="show-ls-md-1">Время</span>
+                                        <span class="icon aero-table__arrow-icon"></span>
+                                    </td>
+                                    <td class="aero-table__col aero-table__col_purpose_title">Статус</td>
+                                    <td class="aero-table__col aero-table__col_purpose_title hide-ls-lg-1">Примечание</td>
                                 </tr>
 
                                 <tr class="aero-table__row aero-table__row_flight-type_departure">
-                                    <td class="aero-table__col">Вылет</td>
+                                    <td class="aero-table__col hide-ls-md-2">Вылет</td>
                                     <td class="aero-table__col">УН849</td>
-                                    <td class="aero-table__col">Трансаэро</td>
-                                    <td class="aero-table__col">
-                                        <img src="http://www.domodedovo.ru/img.asp?id=658501">
+                                    <td class="aero-table__col hide-ls-sm-1">
+                                        <div class="aero-table__col-inner aero-table__company">
+                                            <a class="link link_type_block" target="_blank" href="http://www.domodedovo.ru/ru/main/timetablenew/airlines/details.asp?id=658501">
+                                                <div class="aero-table__company-logo hide-ls-lg-1">
+                                                    <img class="image" src="http://www.domodedovo.ru/img.asp?id=658501">
+                                                </div>
+                                                <div class="aero-table__company-name">Трансаэро</div>
+                                            </a>
+                                        </div>
                                     </td>
-                                    <td class="aero-table__col">Б 747-400</td>
-                                    <td class="aero-table__col">Хургада</td>
-                                    <td class="aero-table__col">Вылет в 16:45</td>
-                                    <td class="aero-table__col">Вылетел</td>
-                                    <td class="aero-table__col">-</td>
-                                </tr>
-                                <tr class="aero-table__row aero-table__row_flight-type_arrival aero-table__row_animate_hidden aero-table__row_hidden">
-                                    <td class="aero-table__col">Прилет</td>
-                                    <td class="aero-table__col">УН849</td>
-                                    <td class="aero-table__col">Трансаэро</td>
                                     <td class="aero-table__col">
-                                        <img src="./img/yandex.png">
+                                        <span class="hide-ls-sm-1">Boeing 747-400</span>
+                                        <span title="Boeing 747-400" class="show-ls-sm-1 hide-ls-sm-2">B 747-400</span>
+                                        <span title="Boeing 747-400" class="show-ls-sm-2">B747</span>
                                     </td>
-                                    <td class="aero-table__col">Б 747-400</td>
-                                    <td class="aero-table__col">Хургада</td>
-                                    <td class="aero-table__col">Вылет в 16:45</td>
-                                    <td class="aero-table__col">Вылетел</td>
-                                    <td class="aero-table__col">-</td>
-                                </tr>
-                                <tr class="aero-table__row aero-table__row_flight-type_arrival aero-table__row_animate_hidden aero-table__row_hidden">
-                                    <td class="aero-table__col">Прилет</td>
-                                    <td class="aero-table__col">УН849</td>
-                                    <td class="aero-table__col">Трансаэро</td>
+                                    <td class="aero-table__col hide-ls-sm-1">Хургада</td>
                                     <td class="aero-table__col">
-                                        <img src="./img/yandex.png">
+                                        <span class="hide-ls-sm-1">Вылет в 16:45</span>
+                                        <span title="Вылет в 16:45" class="show-ls-sm-1 hide-ls-sm-2">В 16:45</span>
+                                        <span title="Вылет в 16:45" class="show-ls-sm-2">16:45</span>
                                     </td>
-                                    <td class="aero-table__col">Б 747-400</td>
-                                    <td class="aero-table__col">Хургада</td>
-                                    <td class="aero-table__col">Вылет в 16:45</td>
                                     <td class="aero-table__col">Вылетел</td>
-                                    <td class="aero-table__col">-</td>
-                                </tr>
-                                <tr class="aero-table__row aero-table__row_flight-type_departure">
-                                    <td class="aero-table__col">Вылет</td>
-                                    <td class="aero-table__col">УН849</td>
-                                    <td class="aero-table__col">Трансаэро</td>
-                                    <td class="aero-table__col">
-                                        <img src="http://www.domodedovo.ru/img.asp?id=658501">
-                                    </td>
-                                    <td class="aero-table__col">Б 747-400</td>
-                                    <td class="aero-table__col">Хургада</td>
-                                    <td class="aero-table__col">Вылет в 16:45</td>
-                                    <td class="aero-table__col">Вылетел</td>
-                                    <td class="aero-table__col">-</td>
-                                </tr>
-                                <tr class="aero-table__row aero-table__row_flight-type_arrival aero-table__row_animate_hidden aero-table__row_hidden">
-                                    <td class="aero-table__col">Прилет</td>
-                                    <td class="aero-table__col">УН849</td>
-                                    <td class="aero-table__col">Трансаэро</td>
-                                    <td class="aero-table__col">
-                                        <img src="./img/yandex.png">
-                                    </td>
-                                    <td class="aero-table__col">Б 747-400</td>
-                                    <td class="aero-table__col">Хургада</td>
-                                    <td class="aero-table__col">Вылет в 16:45</td>
-                                    <td class="aero-table__col">Вылетел</td>
-                                    <td class="aero-table__col">-</td>
-                                </tr>
-                                <tr class="aero-table__row aero-table__row_flight-type_departure">
-                                    <td class="aero-table__col">Вылет</td>
-                                    <td class="aero-table__col">УН849</td>
-                                    <td class="aero-table__col">Трансаэро</td>
-                                    <td class="aero-table__col">
-                                        <img src="http://www.domodedovo.ru/img.asp?id=658501">
-                                    </td>
-                                    <td class="aero-table__col">Б 747-400</td>
-                                    <td class="aero-table__col">Хургада</td>
-                                    <td class="aero-table__col">Вылет в 16:45</td>
-                                    <td class="aero-table__col">Вылетел</td>
-                                    <td class="aero-table__col">-</td>
-                                </tr>
-                                <tr class="aero-table__row aero-table__row_flight-type_arrival aero-table__row_animate_hidden aero-table__row_hidden">
-                                    <td class="aero-table__col">Прилет</td>
-                                    <td class="aero-table__col">УН849</td>
-                                    <td class="aero-table__col">Трансаэро</td>
-                                    <td class="aero-table__col">
-                                        <img src="./img/yandex.png">
-                                    </td>
-                                    <td class="aero-table__col">Б 747-400</td>
-                                    <td class="aero-table__col">Хургада</td>
-                                    <td class="aero-table__col">Вылет в 16:45</td>
-                                    <td class="aero-table__col">Вылетел</td>
-                                    <td class="aero-table__col">-</td>
-                                </tr>
-                                <tr class="aero-table__row aero-table__row_flight-type_arrival aero-table__row_animate_hidden aero-table__row_hidden">
-                                    <td class="aero-table__col">Прилет</td>
-                                    <td class="aero-table__col">УН849</td>
-                                    <td class="aero-table__col">Трансаэро</td>
-                                    <td class="aero-table__col">
-                                        <img src="./img/yandex.png">
-                                    </td>
-                                    <td class="aero-table__col">Б 747-400</td>
-                                    <td class="aero-table__col">Хургада</td>
-                                    <td class="aero-table__col">Вылет в 16:45</td>
-                                    <td class="aero-table__col">Вылетел</td>
-                                    <td class="aero-table__col">-</td>
-                                </tr>
-                                <tr class="aero-table__row aero-table__row_flight-type_departure">
-                                    <td class="aero-table__col">Вылет</td>
-                                    <td class="aero-table__col">УН849</td>
-                                    <td class="aero-table__col">Трансаэро</td>
-                                    <td class="aero-table__col">
-                                        <img src="http://www.domodedovo.ru/img.asp?id=658501">
-                                    </td>
-                                    <td class="aero-table__col">Б 747-400</td>
-                                    <td class="aero-table__col">Хургада</td>
-                                    <td class="aero-table__col">Вылет в 16:45</td>
-                                    <td class="aero-table__col">Вылетел</td>
-                                    <td class="aero-table__col">-</td>
-                                </tr>
-                                <tr class="aero-table__row aero-table__row_flight-type_arrival aero-table__row_animate_hidden aero-table__row_hidden">
-                                    <td class="aero-table__col">Прилет</td>
-                                    <td class="aero-table__col">УН849</td>
-                                    <td class="aero-table__col">Трансаэро</td>
-                                    <td class="aero-table__col">
-                                        <img src="./img/yandex.png">
-                                    </td>
-                                    <td class="aero-table__col">Б 747-400</td>
-                                    <td class="aero-table__col">Хургада</td>
-                                    <td class="aero-table__col">Вылет в 16:45</td>
-                                    <td class="aero-table__col">Вылетел</td>
-                                    <td class="aero-table__col">-</td>
-                                </tr>
-                                <tr class="aero-table__row aero-table__row_flight-type_departure">
-                                    <td class="aero-table__col">Вылет</td>
-                                    <td class="aero-table__col">УН849</td>
-                                    <td class="aero-table__col">Трансаэро</td>
-                                    <td class="aero-table__col">
-                                        <img src="http://www.domodedovo.ru/img.asp?id=658501">
-                                    </td>
-                                    <td class="aero-table__col">Б 747-400</td>
-                                    <td class="aero-table__col">Хургада</td>
-                                    <td class="aero-table__col">Вылет в 16:45</td>
-                                    <td class="aero-table__col">Вылетел</td>
-                                    <td class="aero-table__col">-</td>
-                                </tr>
-                                <tr class="aero-table__row aero-table__row_flight-type_arrival aero-table__row_animate_hidden aero-table__row_hidden">
-                                    <td class="aero-table__col">Прилет</td>
-                                    <td class="aero-table__col">УН849</td>
-                                    <td class="aero-table__col">Трансаэро</td>
-                                    <td class="aero-table__col">
-                                        <img src="./img/yandex.png">
-                                    </td>
-                                    <td class="aero-table__col">Б 747-400</td>
-                                    <td class="aero-table__col">Хургада</td>
-                                    <td class="aero-table__col">Вылет в 16:45</td>
-                                    <td class="aero-table__col">Вылетел</td>
-                                    <td class="aero-table__col">-</td>
-                                </tr>
-                                <tr class="aero-table__row aero-table__row_flight-type_arrival aero-table__row_animate_hidden aero-table__row_hidden">
-                                    <td class="aero-table__col">Прилет</td>
-                                    <td class="aero-table__col">УН849</td>
-                                    <td class="aero-table__col">Трансаэро</td>
-                                    <td class="aero-table__col">
-                                        <img src="./img/yandex.png">
-                                    </td>
-                                    <td class="aero-table__col">Б 747-400</td>
-                                    <td class="aero-table__col">Хургада</td>
-                                    <td class="aero-table__col">Вылет в 16:45</td>
-                                    <td class="aero-table__col">Вылетел</td>
-                                    <td class="aero-table__col">-</td>
-                                </tr>
-                                <tr class="aero-table__row aero-table__row_flight-type_departure">
-                                    <td class="aero-table__col">Вылет</td>
-                                    <td class="aero-table__col">УН849</td>
-                                    <td class="aero-table__col">Трансаэро</td>
-                                    <td class="aero-table__col">
-                                        <img src="http://www.domodedovo.ru/img.asp?id=658501">
-                                    </td>
-                                    <td class="aero-table__col">Б 747-400</td>
-                                    <td class="aero-table__col">Хургада</td>
-                                    <td class="aero-table__col">Вылет в 16:45</td>
-                                    <td class="aero-table__col">Вылетел</td>
-                                    <td class="aero-table__col">-</td>
-                                </tr>
-                                <tr class="aero-table__row aero-table__row_flight-type_arrival aero-table__row_animate_hidden aero-table__row_hidden">
-                                    <td class="aero-table__col">Прилет</td>
-                                    <td class="aero-table__col">УН849</td>
-                                    <td class="aero-table__col">Трансаэро</td>
-                                    <td class="aero-table__col">
-                                        <img src="./img/yandex.png">
-                                    </td>
-                                    <td class="aero-table__col">Б 747-400</td>
-                                    <td class="aero-table__col">Хургада</td>
-                                    <td class="aero-table__col">Вылет в 16:45</td>
-                                    <td class="aero-table__col">Вылетел</td>
-                                    <td class="aero-table__col">-</td>
+                                    <td class="aero-table__col hide-ls-lg-1">-</td>
                                 </tr>
                             </table>
                         </div>

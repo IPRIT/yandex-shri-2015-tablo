@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
     for (var el = 0; el < checkboxSelection.length; ++el) {
         checkboxSelection[el].addEventListener('change', AeroTable.onTypeChanged.bind(AeroTable));
     }
+    var tableHeaderCheckboxes = document.querySelectorAll('.aero-table__col.checkbox-button');
+    for (el = 0; el < tableHeaderCheckboxes.length; ++el) {
+        tableHeaderCheckboxes[el].addEventListener('click', AeroTable.onHeaderClick.bind(AeroTable));
+    }
 });
 
 var AeroTable = AeroTable || {};
@@ -27,53 +31,55 @@ AeroTable.onTypeChanged = function(e) {
         departures: this.toggleDepartures
     };
     if (type in events) {
-        events[type](checked, curCheckbox.parentNode);
+        events[type].call(this, checked, curCheckbox.parentNode);
     }
 };
 
 AeroTable.toggleArrivals = function(show, parent) {
-    if (show) {
-        DOM.addClass(parent, 'checkbox-button_pressed');
-    } else {
+    show ? DOM.addClass(parent, 'checkbox-button_pressed') :
         DOM.removeClass(parent, 'checkbox-button_pressed');
-    }
-    var arrivalRows = document.querySelectorAll('.aero-table__row_flight-type_arrival');
-    for (var i = 0; i < arrivalRows.length; ++i) {
-        if (DOM.hasClass(arrivalRows[i], 'aero-table__row_animate_hidden')) {
-            DOM.removeClass(arrivalRows[i], 'aero-table__row_hidden');
-        }
-        DOM.toggleClass(arrivalRows[i], 'aero-table__row_animate_hidden');
-        (function(element) {
-            setTimeout(function() {
-                if (DOM.hasClass(element, 'aero-table__row_animate_hidden')) {
-                    DOM.addClass(element, 'aero-table__row_hidden');
-                }
-            }, 150);
-        })(arrivalRows[i]);
-    }
+
+    this.toggleRows('.aero-table__row_flight-type_arrival');
 };
 
 AeroTable.toggleDepartures = function(show, parent) {
-    if (show) {
-        DOM.addClass(parent, 'checkbox-button_pressed');
-    } else {
+    show ? DOM.addClass(parent, 'checkbox-button_pressed') :
         DOM.removeClass(parent, 'checkbox-button_pressed');
-    }
-    var departureRows = document.querySelectorAll('.aero-table__row_flight-type_departure');
-    for (var i = 0; i < departureRows.length; ++i) {
-        if (DOM.hasClass(departureRows[i], 'aero-table__row_animate_hidden')) {
-            DOM.removeClass(departureRows[i], 'aero-table__row_hidden');
+
+    this.toggleRows('.aero-table__row_flight-type_departure');
+};
+
+AeroTable.toggleRows = function(rowSelector) {
+    var curRows = document.querySelectorAll(rowSelector);
+    for (var i = 0; i < curRows.length; ++i) {
+        if (DOM.hasClass(curRows[i], 'aero-table__row_animate_hidden')) {
+            DOM.removeClass(curRows[i], 'aero-table__row_hidden');
         }
-        DOM.toggleClass(departureRows[i], 'aero-table__row_animate_hidden');
+        DOM.toggleClass(curRows[i], 'aero-table__row_animate_hidden');
         (function(element) {
             setTimeout(function() {
                 if (DOM.hasClass(element, 'aero-table__row_animate_hidden')) {
                     DOM.addClass(element, 'aero-table__row_hidden');
                 }
             }, 150);
-        })(departureRows[i]);
+        })(curRows[i]);
     }
 };
+
+AeroTable.onHeaderClick = function(e) {
+    if (!e || !e.target) {
+        return;
+    }
+    var eventTargetNode = e.target;
+    while (!DOM.hasClass(eventTargetNode, 'checkbox-button')) {
+        eventTargetNode = eventTargetNode.parentNode;
+    }
+    DOM.hasClass(eventTargetNode, 'checkbox-button_pressed') ?
+        DOM.removeClass(eventTargetNode, 'checkbox-button_pressed') :
+        DOM.addClass(eventTargetNode, 'checkbox-button_pressed');
+    //some logic
+};
+
 
 var DOM = DOM || {};
 
