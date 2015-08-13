@@ -36,6 +36,7 @@ AeroTable.onTypeChanged = function(e) {
 };
 
 AeroTable.toggleArrivals = function(show, parent) {
+    console.log(show, parent);
     show ? DOM.addClass(parent, 'checkbox-button_pressed') :
         DOM.removeClass(parent, 'checkbox-button_pressed');
 
@@ -43,6 +44,7 @@ AeroTable.toggleArrivals = function(show, parent) {
 };
 
 AeroTable.toggleDepartures = function(show, parent) {
+    console.log(show, parent);
     show ? DOM.addClass(parent, 'checkbox-button_pressed') :
         DOM.removeClass(parent, 'checkbox-button_pressed');
 

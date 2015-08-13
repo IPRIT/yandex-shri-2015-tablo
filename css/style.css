@@ -1,4 +1,5 @@
 html, body {
+    min-height: 100%;
     height: 100%;
 }
 html {
@@ -63,7 +64,7 @@ textarea {
     display: block;
 }
 .page-root {
-    height: 100%;
+    min-height: 100%;
     background-color: #f7f8f6;
 }
 .header-wrapper {
@@ -327,7 +328,7 @@ textarea {
     -o-transition: all .15s ease-out;
     transition: all .15s ease-out;
 }
-.aero-table__row:nth-child(2n + 1) {
+.aero-table__row:nth-of-type(2n + 1) {
     background-color: rgba(0,0,0,0.02);
 }
 .aero-table__col {
