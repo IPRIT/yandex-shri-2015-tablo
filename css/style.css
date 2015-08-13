@@ -27,13 +27,6 @@ button[disabled],html input[disabled] {
 textarea {
     overflow: auto;
 }
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-td,th {
-    padding: 0;
-}
 
 .image {
     border: 0;
@@ -58,6 +51,10 @@ td,th {
     background-repeat: no-repeat;
     background-position: center center;
     transition: transform .1s ease-out;
+}
+.table {
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 .link:hover, .link:visited:hover {
     color: #d00;
@@ -322,12 +319,16 @@ td,th {
     width: 100%;
 }
 .aero-table__row {
+    padding: 0;
     opacity: 1;
     -webkit-transition: all .15s ease-out;
     -moz-transition: all .15s ease-out;
     -ms-transition: all .15s ease-out;
     -o-transition: all .15s ease-out;
     transition: all .15s ease-out;
+}
+.aero-table__row:nth-child(2n + 1) {
+    background-color: rgba(0,0,0,0.02);
 }
 .aero-table__col {
     padding: 10px;
@@ -361,8 +362,23 @@ td,th {
 .aero-table__company-logo .image {
     max-width: 100%;
 }
+.aero-table__company-logo_size_quad .image {
+    max-width: 36px;
+    height: 36px;
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 1px #ccc;
+}
+.aero-table__company-logo_size_quad {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 4px;
+}
 .aero-table__company-name {
     text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    top: -2px;
+    position: relative;
 }
 .aero-table__col {
     text-align: center;
@@ -380,10 +396,28 @@ td,th {
     -o-transform: rotate(180deg);
     transform: rotate(180deg);
 }
+.aero-table__status {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+}
+.aero-table__status_type_success {
+    border: 1px solid rgba(9, 129, 0, 0.93);
+    background-color: rgba(9, 165, 0, 0.61);
+}
+.aero-table__status_type_failed {
+    border: 1px solid rgba(180, 39, 33, 0.83);
+    background-color: rgba(238, 49, 42, 0.64);
+}
+.aero-table__status_type_freeze {
+    border: 1px solid rgba(162, 129, 0, 0.93);
+    background-color: rgba(221, 175, 0, 0.61);
+}
 
 
 .hide,
-.show-ls-lg-1, .show-ls-lg-2,
+.show-ls-lg-1, .show-ls-lg-2, .show-ls-lg-1_inline, .show-ls-lg-2_inline,
 .show-ls-md-1, .show-ls-md-2,
 .show-ls-sm-1, .show-ls-sm-2 {
     display: none;
@@ -395,6 +429,9 @@ td,th {
     .show-ls-lg-1 {
         display: block;
     }
+    .show-ls-lg-1_inline {
+        display: inline-block;
+    }
 }
 @media screen and (max-width: 900px) {
     .hide-ls-lg-2 {
@@ -402,6 +439,9 @@ td,th {
     }
     .show-ls-lg-2 {
         display: block;
+    }
+    .show-ls-lg-2_inline {
+        display: inline-block;
     }
 }
 @media screen and (max-width: 800px) {
@@ -453,7 +493,7 @@ td,th {
     .aero-table__col {
         padding: 10px 2px;
     }
-    .checkbox-button__text {
+    .checkbox-button__text, .aero-table {
         font-size: 0.8em;
     }
     .checkbox-button {
