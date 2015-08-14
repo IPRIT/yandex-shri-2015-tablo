@@ -112,6 +112,7 @@
                                         <span class="hide-ls-md-2">Аэропорт назначения</span>
                                         <span class="show-ls-md-2">Назначение</span>
                                     </td>
+                                    <!-- Возможно применять кнопки в заголовке таблицы -->
                                     <td class="aero-table__col aero-table__col_purpose_title checkbox-button checkbox-button_pressed aero-table__time-sort" id="checkbox_change_time_sort">
                                         <span class="hide-ls-lg-1">Плановое время вылета или прилёта</span>
                                         <span class="show-ls-lg-1 hide-ls-md-1">Плановое время</span>
@@ -122,7 +123,7 @@
                                     <td class="aero-table__col aero-table__col_purpose_title hide-ls-lg-1">Примечание</td>
                                 </tr>
                                 <!-- :) -->
-                                <tr class="aero-table__row aero-table__row_flight-type_departure">
+                                <!--<tr class="aero-table__row aero-table__row_flight-type_departure" data-id="YC-515-2015-08-14">
                                     <td class="aero-table__col hide-ls-md-2">Вылет</td>
                                     <td class="aero-table__col">
                                         <span class="hide-ls-md-2">УН849</span>
@@ -134,7 +135,7 @@
                                         </span>
                                     </td>
                                     <td class="aero-table__col hide-ls-sm-1">
-                                        <div class="aero-table__col-inner aero-table__company">
+                                        <div onclick="event.cancelBubble = true;" class="aero-table__col-inner aero-table__company">
                                             <a class="link link_type_block" target="_blank" href="http://www.domodedovo.ru/ru/main/timetablenew/airlines/details.asp?id=658501">
                                                 <div class="aero-table__company-logo hide-ls-lg-1">
                                                     <img class="image" src="//yandex.st/rasp/media/data/company/logo/trair.gif">
@@ -1626,7 +1627,7 @@
                                         </span>
                                     </td>
                                     <td class="aero-table__col hide-ls-lg-1">-</td>
-                                </tr>
+                                </tr>-->
                             </table>
                         </div>
                     </div>
@@ -1634,6 +1635,7 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="js/app.js?1"></script>
+    <script type="text/javascript" src="js/data.js?4"></script>
+    <script type="text/javascript" src="js/app.js?301"></script>
 </body>
 </html>

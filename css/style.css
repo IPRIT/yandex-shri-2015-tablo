@@ -328,8 +328,14 @@ textarea {
     -o-transition: all .15s ease-out;
     transition: all .15s ease-out;
 }
+.aero-table__row:not(.aero-table__row_purpose_header) {
+    cursor: pointer;
+}
 .aero-table__row:hover:not(.aero-table__row_purpose_header) {
     background-color: #FFECA6;
+}
+.aero-table__row:active:not(.aero-table__row_purpose_header) {
+    background-color: #edda97;
 }
 .aero-table__row:hover:not(.aero-table__row_purpose_header) .aero-table__col {
     border-left-color: rgba(171, 65, 52, 0.11);
@@ -380,7 +386,7 @@ textarea {
 .aero-table__table-hovered_num_6 .aero-table__col.aero-table__col_purpose_title:not(.checkbox-button_pressed):nth-child(6),
 .aero-table__table-hovered_num_7 .aero-table__col.aero-table__col_purpose_title:not(.checkbox-button_pressed):nth-child(7),
 .aero-table__table-hovered_num_8 .aero-table__col.aero-table__col_purpose_title:not(.checkbox-button_pressed):nth-child(8) {
-    background-color: rgba(255, 236, 166, 0.9);
+    background-color: rgba(255, 236, 166, 0.8);
     border-bottom: 1px solid rgba(171, 65, 52, 0.11);
 }
 .aero-table__row_bg_shady {
@@ -392,6 +398,7 @@ textarea {
     overflow: hidden;
     width: 100px;
     position: relative;
+    text-overflow: ellipsis;
 }
 .aero-table__col_purpose_title {
     font-weight: 700;
@@ -417,8 +424,12 @@ textarea {
 .aero-table__col {
     border: 1px solid #e3e3e3;
 }
+.aero-table__company-logo {
+    margin: 5px;
+}
 .aero-table__company-logo .image {
     max-width: 100%;
+    border-radius: 3px;
 }
 .aero-table__company-logo_size_quad .image {
     max-width: 36px;
@@ -437,6 +448,9 @@ textarea {
     vertical-align: middle;
     top: -2px;
     position: relative;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    overflow: hidden;
 }
 .aero-table__col {
     text-align: center;
