@@ -208,12 +208,11 @@ AeroTable.onRowClick = function(e) {
     }
 
     function getFlightById(dataId) {
-        for (var el in dataList) {
-            if (dataList[el].id === dataId) {
-                return dataList[el];
-            }
-        }
-        return false;
+        var flight = dataList.filter(function(flight) {
+            return flight.id === dataId
+        });
+        return flight.length ?
+            flight[0] : false;
     }
 
     var dataId = targetRow.getAttribute('data-id'),
@@ -221,7 +220,63 @@ AeroTable.onRowClick = function(e) {
     if (!flightData) {
         return;
     }
-    console.log(flightData);
+    var overlay = document.querySelector('.overlay'),
+        callbackOverlayClose = function(e) {
+            DOM.removeClass(document.body, 'overlay-active');
+            DOM.addClass(overlay, 'overlay_visibility_hidden');
+            removeEventListener(overlay, 'click', callbackOverlayClose);
+        };
+    DOM.addClass(document.body, 'overlay-active');
+    DOM.removeClass(overlay, 'overlay_visibility_hidden');
+    overlay.addEventListener('click', callbackOverlayClose);
+
+    var flightName = document.querySelector('.flight-info__title'),
+        flightWay = document.querySelector('.flight-info__way'),
+        flightType = document.querySelector('.flight-info__type-text'),
+        time = document.querySelector('.flight-info__time-text'),
+        flightStatusCircle = document.querySelector('.flight-info__status-circle'),
+        flightStatus = document.querySelector('.flight-info__status-text'),
+        flightNote = document.querySelector('.flight-info__note-content'),
+        companyUrl = document.querySelector('.flight-info__company-link'),
+        companyLogo = document.querySelector('.flight-info__company-logo .image'),
+        companyName = document.querySelector('.flight-info__company-name');
+
+    flightName.innerHTML = flightData.flight.name;
+    flightWay.innerHTML = flightData.way.from + ' — ' + flightData.way.destination;
+    flightType.innerHTML = flightData.dir === 'departure' ? 'Вылет' : 'Прилет';
+    time.innerHTML = flightData.destionation_time;
+    flightStatusCircle.title = flightData.status.text;
+
+    var statusCircle = flightStatusCircle.getElementsByTagName('span')[0],
+        matchedPresence = statusCircle.className.match(/\s?aero-table__status_role_(success|freeze|failed)\s?/i),
+        statusClassPlaceholder = 'aero-table__status_role_';
+    if (matchedPresence) {
+        DOM.removeClass(statusCircle, statusClassPlaceholder + matchedPresence[1]);
+    }
+    var statusClassName,
+        classList = [
+            'aero-table__status_role_success',
+            'aero-table__status_role_freeze',
+            'aero-table__status_role_failed'
+        ],
+        linkage = {
+            departure: [0, 1, 0, 0],
+            arrival: [0, 0, 0],
+            all: [1, 2]
+        };
+    if (flightData.status.code < 0) {
+        statusClassName = classList[ linkage.all[Math.abs(flightData.status.code) - 1] ]
+    } else {
+        statusClassName = classList[ linkage[flightData.dir][flightData.status.code - 1] ]
+    }
+    DOM.addClass(statusCircle, statusClassName);
+
+    flightStatus.innerHTML = flightData.status.text;
+    flightNote.innerHTML = flightData.note.text || 'Нет данных';
+
+    companyUrl.href = flightData.company.url;
+    companyLogo.src = flightData.company.logo.max;
+    companyName.innerHTML = flightData.company.name;
 };
 
 AeroTable.fillTable = function(dataList) {
@@ -310,7 +365,7 @@ AeroTable.fillTable = function(dataList) {
             .replace(/\{\{destination_time_shortest\}\}/ig, data.destionation_time)
             .replace(/\{\{status\}\}/ig, data.status.text)
             .replace(/\{\{status_circle_classname\}\}/ig, statusClassName)
-            .replace(/\{\{note\}\}/ig, data.note.text);
+            .replace(/\{\{note\}\}/ig, data.note.text.length ? data.note.text : '-');
     }
 
     var curData, rowHtmlReady;
@@ -345,6 +400,35 @@ DOM.toggleClass = function(o, c) {
     return DOM.hasClass(o, c) ?
         DOM.removeClass(o, c) : DOM.addClass(o, c);
 };
+
+function removeEventListener(element, type, handler) {
+    var handlers = element.events && element.events[type];
+    if (!handlers) {
+        return;
+    }
+    delete handlers[handler.guid];
+
+    for (var any in handlers) {
+        return;
+    }
+    if (element.removeEventListener) {
+        element.removeEventListener(type, element.handle, false);
+    } else if (element.detachEvent) {
+        element.detachEvent('on' + type, element.handle);
+    }
+    delete element.events[type];
+
+    for (any in element.events) {
+        return
+    }
+    try {
+        delete element.handle;
+        delete element.events;
+    } catch(e) {
+        element.removeAttribute('handle');
+        element.removeAttribute('events');
+    }
+}
 
 /**
  * TODO:

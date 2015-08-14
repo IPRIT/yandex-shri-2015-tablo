@@ -28,7 +28,7 @@ var Airport = {
                 text: 'Вылетел'
             },
             note: {
-                text: '-'
+                text: ''
             }
             /*
             Departure: 1 - регистрация, 2 - ожидание посадки, 3 - посадка закончена, 4 - вылетел
@@ -63,7 +63,7 @@ var Airport = {
                 text: 'Задерживается до 20:00'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'YC-455-2015-08-14',
@@ -93,7 +93,7 @@ var Airport = {
                 text: 'Задерживается до 23:00'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'S7-1149-2015-08-14',
@@ -123,7 +123,7 @@ var Airport = {
                 text: 'Вылетел'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'U6-2897-2015-08-14',
@@ -153,7 +153,7 @@ var Airport = {
                 text: 'Отменен'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'VGV-2390-2015-08-14',
@@ -179,11 +179,11 @@ var Airport = {
             },
             destionation_time: '19:10',
             status: {
-                code: -2,
+                code: 3,
                 text: 'Приземлился'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'U6-2841-2015-08-14-2',
@@ -213,7 +213,7 @@ var Airport = {
                 text: 'Задерживается до 20:00'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'YC-455-2015-08-14-2',
@@ -243,7 +243,7 @@ var Airport = {
                 text: 'Задерживается до 23:00'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'S7-1149-2015-08-14-2',
@@ -273,7 +273,7 @@ var Airport = {
                 text: 'Вылетел'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'U6-2897-2015-08-14-2',
@@ -303,7 +303,7 @@ var Airport = {
                 text: 'Отменен'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'VGV-2390-2015-08-14-2',
@@ -329,11 +329,11 @@ var Airport = {
             },
             destionation_time: '19:10',
             status: {
-                code: -2,
+                code: 3,
                 text: 'Приземлился'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'U6-2841-2015-08-14-3',
@@ -363,7 +363,7 @@ var Airport = {
                 text: 'Задерживается до 20:00'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'YC-455-2015-08-14-3',
@@ -393,7 +393,7 @@ var Airport = {
                 text: 'Задерживается до 23:00'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'S7-1149-2015-08-14-3',
@@ -423,7 +423,7 @@ var Airport = {
                 text: 'Вылетел'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'U6-2897-2015-08-14-3',
@@ -453,7 +453,7 @@ var Airport = {
                 text: 'Отменен'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'VGV-2390-2015-08-14-3',
@@ -479,11 +479,11 @@ var Airport = {
             },
             destionation_time: '19:10',
             status: {
-                code: -2,
+                code: 3,
                 text: 'Приземлился'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'YC-515-2015-08-14-2',
@@ -513,7 +513,7 @@ var Airport = {
                 text: 'Вылетел'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'YC-515-2015-08-14-3',
@@ -543,7 +543,7 @@ var Airport = {
                 text: 'Вылетел'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'U6-2841-2015-08-14-4',
@@ -573,7 +573,7 @@ var Airport = {
                 text: 'Задерживается до 20:00'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'YC-455-2015-08-14-4',
@@ -603,7 +603,7 @@ var Airport = {
                 text: 'Задерживается до 23:00'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'S7-1149-2015-08-14-4',
@@ -633,7 +633,7 @@ var Airport = {
                 text: 'Вылетел'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'U6-2897-2015-08-14-4',
@@ -663,7 +663,7 @@ var Airport = {
                 text: 'Отменен'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'VGV-2390-2015-08-14-4',
@@ -689,11 +689,11 @@ var Airport = {
             },
             destionation_time: '19:10',
             status: {
-                code: -2,
+                code: 3,
                 text: 'Приземлился'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'U6-2841-2015-08-14-4',
@@ -723,7 +723,7 @@ var Airport = {
                 text: 'Задерживается до 20:00'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'YC-455-2015-08-14-4',
@@ -753,7 +753,7 @@ var Airport = {
                 text: 'Задерживается до 23:00'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'S7-1149-2015-08-14-4',
@@ -783,7 +783,7 @@ var Airport = {
                 text: 'Вылетел'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'U6-2897-2015-08-14-4',
@@ -813,7 +813,7 @@ var Airport = {
                 text: 'Отменен'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'VGV-2390-2015-08-14-4',
@@ -839,11 +839,11 @@ var Airport = {
             },
             destionation_time: '19:10',
             status: {
-                code: -2,
+                code: 3,
                 text: 'Приземлился'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'U6-2841-2015-08-14-4',
@@ -873,7 +873,7 @@ var Airport = {
                 text: 'Задерживается до 20:00'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'YC-455-2015-08-14-4',
@@ -903,7 +903,7 @@ var Airport = {
                 text: 'Задерживается до 23:00'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'S7-1149-2015-08-14-4',
@@ -933,7 +933,7 @@ var Airport = {
                 text: 'Вылетел'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'U6-2897-2015-08-14-4',
@@ -963,7 +963,7 @@ var Airport = {
                 text: 'Отменен'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'VGV-2390-2015-08-14-4',
@@ -989,11 +989,11 @@ var Airport = {
             },
             destionation_time: '19:10',
             status: {
-                code: -2,
+                code: 3,
                 text: 'Приземлился'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'YC-515-2015-08-14-4',
@@ -1023,7 +1023,7 @@ var Airport = {
                 text: 'Вылетел'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }, {
             id: 'YC-515-2015-08-14-4',
@@ -1053,7 +1053,7 @@ var Airport = {
                 text: 'Вылетел'
             },
             note: {
-                text: '-'
+                text: ''
             }
         }]
     }
