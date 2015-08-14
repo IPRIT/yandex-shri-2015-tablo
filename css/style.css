@@ -328,8 +328,14 @@ textarea {
     -o-transition: all .15s ease-out;
     transition: all .15s ease-out;
 }
+.aero-table__row:not(.aero-table__row_purpose_header) {
+    cursor: pointer;
+}
 .aero-table__row:hover:not(.aero-table__row_purpose_header) {
     background-color: #FFECA6;
+}
+.aero-table__row:active:not(.aero-table__row_purpose_header) {
+    background-color: #edda97;
 }
 .aero-table__row:hover:not(.aero-table__row_purpose_header) .aero-table__col {
     border-left-color: rgba(171, 65, 52, 0.11);
@@ -380,7 +386,7 @@ textarea {
 .aero-table__table-hovered_num_6 .aero-table__col.aero-table__col_purpose_title:not(.checkbox-button_pressed):nth-child(6),
 .aero-table__table-hovered_num_7 .aero-table__col.aero-table__col_purpose_title:not(.checkbox-button_pressed):nth-child(7),
 .aero-table__table-hovered_num_8 .aero-table__col.aero-table__col_purpose_title:not(.checkbox-button_pressed):nth-child(8) {
-    background-color: rgba(255, 236, 166, 0.9);
+    background-color: rgba(255, 236, 166, 0.8);
     border-bottom: 1px solid rgba(171, 65, 52, 0.11);
 }
 .aero-table__row_bg_shady {
@@ -392,6 +398,7 @@ textarea {
     overflow: hidden;
     width: 100px;
     position: relative;
+    text-overflow: ellipsis;
 }
 .aero-table__col_purpose_title {
     font-weight: 700;
@@ -417,8 +424,12 @@ textarea {
 .aero-table__col {
     border: 1px solid #e3e3e3;
 }
+.aero-table__company-logo {
+    margin: 5px;
+}
 .aero-table__company-logo .image {
     max-width: 100%;
+    border-radius: 3px;
 }
 .aero-table__company-logo_size_quad .image {
     max-width: 36px;
@@ -437,6 +448,9 @@ textarea {
     vertical-align: middle;
     top: -2px;
     position: relative;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    overflow: hidden;
 }
 .aero-table__col {
     text-align: center;
@@ -497,6 +511,112 @@ textarea {
     border-bottom: 0 !important;
     box-shadow: none !important;
 }
+.overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1000;
+}
+.overlay_theme_black {
+    background-color: rgba(0,0,0,0.3);
+}
+.overlay_theme_grey {
+    background-color: rgba(0,0,0,0.15);
+}
+.overlay_visibility_hidden {
+    display: none;
+}
+.overlay-active {
+    overflow: hidden;
+}
+.overlay__content {
+    margin: 0 auto;
+    padding: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+}
+.component-block.popup {
+    -webkit-box-shadow: 0 3px 16px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 3px 16px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 16px 1px rgba(0, 0, 0, 0.2);
+}
+.popup {
+    font-size: 1.2em;
+}
+.flight-info {
+    position: relative;
+    max-width: 700px;
+    margin: 0 auto;
+    top: 20%;
+    margin-bottom: 100px;
+}
+.flight-info__title {
+    text-align: center;
+}
+.flight-info__way {
+    color: #969696;
+    text-align: center;
+}
+.flight-info__information {
+    padding: 20px;
+    line-height: 1.8;
+}
+.flight-info__info-title {
+    font-weight: 500;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+.flight-info__type-title, .flight-info__time-title, .flight-info__status-label, .flight-info__note span {
+    color: #777;
+}
+.flight-info__status-label {
+    margin-right: 5px;
+}
+.flight-info__status {
+    position: relative;
+}
+.flight-info__status-circle {
+    display: inline-block;
+    margin-right: 6px;
+}
+.flight-info__status-circle span {
+    top: -1px;
+    position: relative;
+}
+.flight-info__note-content {
+    padding: 10px 20px;
+    border: 2px solid #FC0;
+    background-color: rgba(252, 204, 45, 0.09);
+    margin-top: 10px;
+    border-radius: 2px;
+}
+.flight-info__company-logo .image {
+    border-radius: 2px;
+    max-width: 100%;
+}
+.flight-info__company-link {
+    display: inline-block;
+}
+.flight-info__company {
+    text-align: center;
+}
+.footer-layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px 30px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+
 
 .hide,
 .show-ls-lg-1, .show-ls-lg-2, .show-ls-lg-1_inline-block, .show-ls-lg-2_inline-block,
