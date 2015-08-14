@@ -1,11 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var checkboxSelection = document.querySelectorAll('.aero-table__checkbox-item');
+    var table = document.querySelector('.aero-table__table:not(.aero-table__sticky-table)'),
+        checkboxSelection = document.querySelectorAll('.aero-table__checkbox-item');
+    table.addEventListener('mouseleave', AeroTable.onMouseLeave.bind(AeroTable));
     for (var el = 0; el < checkboxSelection.length; ++el) {
         checkboxSelection[el].addEventListener('change', AeroTable.onTypeChanged.bind(AeroTable));
     }
     var tableHeaderCheckboxes = document.querySelectorAll('.aero-table__col.checkbox-button');
     for (el = 0; el < tableHeaderCheckboxes.length; ++el) {
         tableHeaderCheckboxes[el].addEventListener('click', AeroTable.onHeaderClick.bind(AeroTable));
+    }
+    var tableCells = document.querySelectorAll('.aero-table__col');
+    for (el = 0; el < tableCells.length; ++el) {
+        tableCells[el].addEventListener('mouseover', AeroTable.onCellHovered.bind(AeroTable));
     }
     document.addEventListener('scroll', AeroTable.onWindowScroll.bind(AeroTable));
     window.addEventListener('resize', AeroTable.onBodyResize.bind(AeroTable));
@@ -109,7 +115,7 @@ AeroTable.onWindowScroll = function(e) {
         headerTableRow = document.querySelector('.aero-table__row_purpose_header:not(.aero-table__sticky)'),
         stickyHeader = document.querySelector('.aero-table__sticky-header');
 
-    function getOffsetTop(node) {
+    function getOffset(node) {
         var box = { top: 0, left: 0 };
         if (typeof node.getBoundingClientRect !== 'undefined') {
             box = node.getBoundingClientRect();
@@ -120,7 +126,7 @@ AeroTable.onWindowScroll = function(e) {
         };
     }
 
-    var tableOffsetTop = getOffsetTop(headerTableRow).top;
+    var tableOffsetTop = getOffset(headerTableRow).top;
     if (scrollTop > tableOffsetTop - headerMenuWrapperHeight) {
         DOM.addClass(stickyHeader, 'aero-table__sticky-header_fixed');
         stickyHeader.style.top = (headerMenuWrapperHeight - 1) + 'px';
@@ -138,6 +144,40 @@ AeroTable.onBodyResize = function(e) {
     stickyHeader.style.width = (
         Math.max(headerTableRow.offsetWidth, headerTableRow.clientWidth) + 1
     ) + 'px';
+};
+
+AeroTable.onCellHovered = function(e) {
+    var target = e.target;
+    while (!DOM.hasClass(target, 'aero-table__col')) {
+        target = target.parentNode;
+    }
+    var collection = target.parentNode.childNodes,
+        index = 1;
+    for (var i = 0; i < collection.length; ++i) {
+        if (collection[i] == target) {
+            break;
+        }
+        DOM.hasClass(collection[i], 'aero-table__col') && ++index;
+    }
+    if (!index) {
+        return;
+    }
+    var classNamePlaceholder = 'aero-table__table-hovered_num_',
+        table = document.querySelector('.aero-table__table:not(.aero-table__sticky-table)'),
+        matchedIndex = table.className.match(/aero-table__table-hovered_num_(\d+)/i);
+    if (matchedIndex && matchedIndex[1] != index) {
+        DOM.removeClass(table, classNamePlaceholder + matchedIndex[1]);
+    }
+    DOM.addClass(table, classNamePlaceholder + index);
+};
+
+AeroTable.onMouseLeave = function(e) {
+    var table = e.target;
+    var classNamePlaceholder = 'aero-table__table-hovered_num_',
+        matchedIndex = table.className.match(/aero-table__table-hovered_num_(\d+)/i);
+    if (matchedIndex && matchedIndex[1]) {
+        DOM.removeClass(table, classNamePlaceholder + matchedIndex[1]);
+    }
 };
 
 
@@ -168,7 +208,7 @@ DOM.toggleClass = function(o, c) {
 /**
  * TODO:
  *
- * 1) по наведению курсора на определённое место в табло контрастным цветом выделяются соответствующие строка и столбец;
+ * 1) [Ready] по наведению курсора на определённое место в табло контрастным цветом выделяются соответствующие строка и столбец;
  * 2) сделайте так, чтобы по клику на соответствующую строчку в выплывающем окне показывались все данные рейса;
  *
  */
