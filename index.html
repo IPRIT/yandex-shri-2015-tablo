@@ -60,6 +60,38 @@
                     </div>
                     <div class="aero-table component-block">
                         <div class="aero-table__inner">
+                            <div class="aero-table__sticky-header">
+                                <table class="table aero-table__table">
+                                    <tr class="aero-table__row aero-table__row_purpose_header aero-table__sticky">
+                                        <td class="aero-table__col aero-table__col_purpose_title hide-ls-md-2">Тип рейса</td>
+                                        <td class="aero-table__col aero-table__col_purpose_title">
+                                            <span class="hide-ls-md-2">Номер рейса</span>
+                                            <span title="Номер рейса" class="show-ls-md-2">Рейс</span>
+                                        </td>
+                                        <td class="aero-table__col aero-table__col_purpose_title hide-ls-sm-1">
+                                            <span class="hide-ls-lg-2">Авиакомпания</span>
+                                            <span class="show-ls-lg-2">Компания</span>
+                                        </td>
+                                        <td class="aero-table__col aero-table__col_purpose_title">
+                                            <span class="hide-ls-md-2">Тип самолета</span>
+                                            <span class="show-ls-md-2 hide-ls-sm-2">Самолет</span>
+                                            <span class="show-ls-sm-2">Судно</span>
+                                        </td>
+                                        <td class="aero-table__col aero-table__col_purpose_title hide-ls-md-2">
+                                            <span class="hide-ls-md-2">Аэропорт назначения</span>
+                                            <span class="show-ls-md-2">Назначение</span>
+                                        </td>
+                                        <td class="aero-table__col aero-table__col_purpose_title checkbox-button checkbox-button_pressed aero-table__time-sort" id="checkbox_change_time_sort">
+                                            <span class="hide-ls-lg-1">Плановое время вылета или прилёта</span>
+                                            <span class="show-ls-lg-1 hide-ls-md-1">Плановое время</span>
+                                            <span class="show-ls-md-1">Время</span>
+                                            <span class="icon aero-table__arrow-icon"></span>
+                                        </td>
+                                        <td class="aero-table__col aero-table__col_purpose_title">Статус</td>
+                                        <td class="aero-table__col aero-table__col_purpose_title hide-ls-lg-1">Примечание</td>
+                                    </tr>
+                                </table>
+                            </div>
                             <table class="table aero-table__table">
                                 <tr class="aero-table__row aero-table__row_purpose_header">
                                     <td class="aero-table__col aero-table__col_purpose_title hide-ls-md-2">Тип рейса</td>
@@ -80,7 +112,7 @@
                                         <span class="hide-ls-md-2">Аэропорт назначения</span>
                                         <span class="show-ls-md-2">Назначение</span>
                                     </td>
-                                    <td class="aero-table__col aero-table__col_purpose_title checkbox-button checkbox-button_pressed">
+                                    <td class="aero-table__col aero-table__col_purpose_title checkbox-button checkbox-button_pressed aero-table__time-sort" id="checkbox_change_time_sort">
                                         <span class="hide-ls-lg-1">Плановое время вылета или прилёта</span>
                                         <span class="show-ls-lg-1 hide-ls-md-1">Плановое время</span>
                                         <span class="show-ls-md-1">Время</span>

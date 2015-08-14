@@ -7,6 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     for (el = 0; el < tableHeaderCheckboxes.length; ++el) {
         tableHeaderCheckboxes[el].addEventListener('click', AeroTable.onHeaderClick.bind(AeroTable));
     }
+    document.addEventListener('scroll', AeroTable.onWindowScroll.bind(AeroTable));
+    window.addEventListener('resize', AeroTable.onBodyResize.bind(AeroTable));
     AeroTable.refreshTableRows();
 });
 
@@ -37,7 +39,6 @@ AeroTable.onTypeChanged = function(e) {
 };
 
 AeroTable.toggleArrivals = function(show, parent) {
-    console.log(show, parent);
     show ? DOM.addClass(parent, 'checkbox-button_pressed') :
         DOM.removeClass(parent, 'checkbox-button_pressed');
 
@@ -45,7 +46,6 @@ AeroTable.toggleArrivals = function(show, parent) {
 };
 
 AeroTable.toggleDepartures = function(show, parent) {
-    console.log(show, parent);
     show ? DOM.addClass(parent, 'checkbox-button_pressed') :
         DOM.removeClass(parent, 'checkbox-button_pressed');
 
@@ -91,10 +91,53 @@ AeroTable.onHeaderClick = function(e) {
     while (!DOM.hasClass(eventTargetNode, 'checkbox-button')) {
         eventTargetNode = eventTargetNode.parentNode;
     }
-    DOM.hasClass(eventTargetNode, 'checkbox-button_pressed') ?
-        DOM.removeClass(eventTargetNode, 'checkbox-button_pressed') :
-        DOM.addClass(eventTargetNode, 'checkbox-button_pressed');
-    //some logic
+    switch (eventTargetNode.id) {
+        case 'checkbox_change_time_sort':
+            var headerCheckboxes = document.querySelectorAll('.aero-table__time-sort');
+            [].forEach.call(headerCheckboxes, function(element) {
+                DOM.toggleClass(element, 'checkbox-button_pressed');
+            });
+            //some logic
+            break;
+    }
+};
+
+AeroTable.onWindowScroll = function(e) {
+    var scrollTop = document.body.scrollTop,
+        headerMenuWrapper = document.querySelector('.header-wrapper'),
+        headerMenuWrapperHeight = headerMenuWrapper.offsetHeight,
+        headerTableRow = document.querySelector('.aero-table__row_purpose_header:not(.aero-table__sticky)'),
+        stickyHeader = document.querySelector('.aero-table__sticky-header');
+
+    function getOffsetTop(node) {
+        var box = { top: 0, left: 0 };
+        if (typeof node.getBoundingClientRect !== 'undefined') {
+            box = node.getBoundingClientRect();
+        }
+        return {
+            top: box.top + (window.pageYOffset || document.body.scrollTop) - (document.body.clientTop  || 0),
+            left: box.left + (window.pageXOffset || document.body.scrollLeft) - (document.body.clientLeft || 0)
+        };
+    }
+
+    var tableOffsetTop = getOffsetTop(headerTableRow).top;
+    if (scrollTop > tableOffsetTop - headerMenuWrapperHeight) {
+        DOM.addClass(stickyHeader, 'aero-table__sticky-header_fixed');
+        stickyHeader.style.top = (headerMenuWrapperHeight - 1) + 'px';
+        stickyHeader.style.width = (
+            Math.max(headerTableRow.offsetWidth, headerTableRow.clientWidth) + 1
+        ) + 'px';
+    } else {
+        DOM.removeClass(stickyHeader, 'aero-table__sticky-header_fixed');
+    }
+};
+
+AeroTable.onBodyResize = function(e) {
+    var headerTableRow = document.querySelector('.aero-table__row_purpose_header:not(.aero-table__sticky)'),
+        stickyHeader = document.querySelector('.aero-table__sticky-header');
+    stickyHeader.style.width = (
+        Math.max(headerTableRow.offsetWidth, headerTableRow.clientWidth) + 1
+    ) + 'px';
 };
 
 
@@ -121,3 +164,11 @@ DOM.toggleClass = function(o, c) {
     return DOM.hasClass(o, c) ?
         DOM.removeClass(o, c) : DOM.addClass(o, c);
 };
+
+/**
+ * TODO:
+ *
+ * 1) по наведению курсора на определённое место в табло контрастным цветом выделяются соответствующие строка и столбец;
+ * 2) сделайте так, чтобы по клику на соответствующую строчку в выплывающем окне показывались все данные рейса;
+ *
+ */
