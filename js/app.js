@@ -159,6 +159,11 @@ AeroTable.onBodyResize = function(e) {
     stickyHeader.style.width = (
         Math.max(headerTableRow.offsetWidth, headerTableRow.clientWidth) + 1
     ) + 'px';
+    var stickyHeaderCells = stickyHeader.getElementsByTagName('td'),
+        origHeaderCells = headerTableRow.getElementsByTagName('td');
+    [].forEach.call(origHeaderCells, function(curCell, index) {
+        stickyHeaderCells[index].style.width = (Math.max(curCell.offsetWidth, curCell.clientWidth) + 1) + 'px';
+    });
 };
 
 AeroTable.onCellHovered = function(e) {
