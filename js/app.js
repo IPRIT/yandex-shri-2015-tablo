@@ -35,6 +35,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 var AeroTable = AeroTable || {};
 
+
+/**
+ * @description
+ * Обработчик для переключателя типа рейса.
+ *
+ * @param {object} e
+ */
 AeroTable.onTypeChanged = function(e) {
     if (!e || !e.target) {
         return;
@@ -59,6 +66,14 @@ AeroTable.onTypeChanged = function(e) {
     }
 };
 
+
+/**
+ * @description
+ * Скрывает/показывает строки с типом "Прилет".
+ *
+ * @param {boolean} show — показать/скрыть.
+ * @param {object} parent — чекбокс.
+ */
 AeroTable.toggleArrivals = function(show, parent) {
     show ? DOM.addClass(parent, 'checkbox-button_pressed') :
         DOM.removeClass(parent, 'checkbox-button_pressed');
@@ -66,6 +81,14 @@ AeroTable.toggleArrivals = function(show, parent) {
     this.toggleRows('.aero-table__row_flight-type_arrival');
 };
 
+
+/**
+ * @description
+ * Скрывает/показывает строки с типом "Вылет".
+ *
+ * @param {boolean} show — показать/скрыть.
+ * @param {object} parent — чекбокс.
+ */
 AeroTable.toggleDepartures = function(show, parent) {
     show ? DOM.addClass(parent, 'checkbox-button_pressed') :
         DOM.removeClass(parent, 'checkbox-button_pressed');
@@ -73,19 +96,13 @@ AeroTable.toggleDepartures = function(show, parent) {
     this.toggleRows('.aero-table__row_flight-type_departure');
 };
 
-AeroTable.refreshTableRows = function() {
-    var shadyRows = document.querySelectorAll('.aero-table__row.aero-table__row_bg_shady');
-    for (var index = 0; index < shadyRows.length; ++index) {
-        DOM.removeClass(shadyRows[index], 'aero-table__row_bg_shady');
-    }
-    var visibleTableRows = document.querySelectorAll(
-        '.aero-table__row:not(.aero-table__row_animate_hidden):not(.aero-table__row_purpose_header)'
-    );
-    for (index = 1; index < visibleTableRows.length; index += 2) {
-        DOM.addClass(visibleTableRows[index], 'aero-table__row_bg_shady');
-    }
-};
 
+/**
+ * @description
+ * Скрывает/показывает строки таблицы по определенному селектору (по типу рейса).
+ *
+ * @param {string} rowSelector — селектор строк.
+ */
 AeroTable.toggleRows = function(rowSelector) {
     var curRows = document.querySelectorAll(rowSelector);
     for (var i = 0; i < curRows.length; ++i) {
@@ -104,6 +121,31 @@ AeroTable.toggleRows = function(rowSelector) {
     this.refreshTableRows();
 };
 
+
+/**
+ * @description
+ * Перекрашивает видимые нечетные строки таблицы.
+ */
+AeroTable.refreshTableRows = function() {
+    var shadyRows = document.querySelectorAll('.aero-table__row.aero-table__row_bg_shady');
+    for (var index = 0; index < shadyRows.length; ++index) {
+        DOM.removeClass(shadyRows[index], 'aero-table__row_bg_shady');
+    }
+    var visibleTableRows = document.querySelectorAll(
+        '.aero-table__row:not(.aero-table__row_animate_hidden):not(.aero-table__row_purpose_header)'
+    );
+    for (index = 1; index < visibleTableRows.length; index += 2) {
+        DOM.addClass(visibleTableRows[index], 'aero-table__row_bg_shady');
+    }
+};
+
+
+/**
+ * @description
+ * Обработчик клика по кнопкам в "шапке" таблицы.
+ *
+ * @param {object} e
+ */
 AeroTable.onHeaderClick = function(e) {
     if (!e || !e.target) {
         return;
@@ -123,6 +165,13 @@ AeroTable.onHeaderClick = function(e) {
     }
 };
 
+
+/**
+ * @description
+ * Обработчик события скрола мышки. Отвечает за "приклеивающийся" заголовок таблицы.
+ *
+ * @param {object} e
+ */
 AeroTable.onWindowScroll = function(e) {
     var scrollTop = document.body.scrollTop,
         headerMenuWrapper = document.querySelector('.header-wrapper'),
@@ -153,6 +202,14 @@ AeroTable.onWindowScroll = function(e) {
     }
 };
 
+
+/**
+ * @description
+ * Обработчик изменения размера страницы. Отвечает за ширину "приклеивающейся" шапки таблицы,
+ * а также за ширину ячеек внутри этой шапки.
+ *
+ * @param {object} e
+ */
 AeroTable.onBodyResize = function(e) {
     var headerTableRow = document.querySelector('.aero-table__row_purpose_header:not(.aero-table__sticky)'),
         stickyHeader = document.querySelector('.aero-table__sticky-header');
@@ -166,6 +223,14 @@ AeroTable.onBodyResize = function(e) {
     });
 };
 
+
+/**
+ * @description
+ * Обработчик наведения мышки на ячейки таблицы.
+ * Отвечает за выделение столбцов таблицы при соответствующем наведении.
+ *
+ * @param {object} e
+ */
 AeroTable.onCellHovered = function(e) {
     var target = e.target;
     while (!DOM.hasClass(target, 'aero-table__col')) {
@@ -191,6 +256,13 @@ AeroTable.onCellHovered = function(e) {
     DOM.addClass(table, classNamePlaceholder + index);
 };
 
+
+/**
+ * @description
+ * Отвечает за снятие выделения со столбцов таблицы.
+ *
+ * @param {object} e
+ */
 AeroTable.onMouseLeave = function(e) {
     var table = e.target;
     var classNamePlaceholder = 'aero-table__table-hovered_num_',
@@ -200,6 +272,14 @@ AeroTable.onMouseLeave = function(e) {
     }
 };
 
+
+/**
+ * @description
+ * Обработчик клика на строку таблицы.
+ * Отвечает за появление popup-окна с информацией о рейсе.
+ *
+ * @param {object} e
+ */
 AeroTable.onRowClick = function(e) {
     var dataList = Airport.Domodedovo.data,
         targetRow = e.target;
@@ -279,6 +359,13 @@ AeroTable.onRowClick = function(e) {
     companyName.innerHTML = flightData.company.name;
 };
 
+
+/**
+ * @description
+ * Заполняет таблицу данными.
+ *
+ * @param {object[]} dataList — массив данных с информацией о рейсах.
+ */
 AeroTable.fillTable = function(dataList) {
     if (!Array.isArray(dataList)) {
         return;
@@ -379,6 +466,13 @@ AeroTable.fillTable = function(dataList) {
 
 var DOM = DOM || {};
 
+/**
+ * @description
+ * Добавляет заданный класс к текущему элементу.
+ *
+ * @param {object} o — текущий элемент.
+ * @param {string} c — заданный класс.
+ */
 DOM.addClass = function(o, c) {
     if (DOM.hasClass(o, c)) {
         return;
@@ -386,21 +480,56 @@ DOM.addClass = function(o, c) {
     o.className = (o.className + ' ' + c).replace(/\s+/g, ' ').replace(/(^\s|\s$)/g, '');
 };
 
+
+/**
+ * @description
+ * Удаляет заданный класс из текущего элемента.
+ *
+ * @param {object} o — текущий элемент.
+ * @param {string} c — заданный класс.
+ */
 DOM.removeClass = function(o, c) {
     var re = new RegExp('(^|\\s)' + c + '(\\s|$)', 'g');
     o.className = o.className.replace(re, '$1').replace(/\s+/g, ' ').replace(/(^\s|\s$)/g, '');
 };
 
+
+/**
+ * @description
+ * Возвращает истиное значение, если в текущем элементе
+ * содержится заданный класс.
+ *
+ * @param {object} o — текущий элемент.
+ * @param {string} c — заданный класс.
+ * @return {boolean}
+ */
 DOM.hasClass = function(o, c) {
     var re = new RegExp('(^|\\s)' + c + '(\\s|$)', 'g');
     return re.test(o.className);
 };
 
+
+/**
+ * @description
+ * Показывает/скрывает заданный класс.
+ *
+ * @param {object} o — текущий элемент.
+ * @param {string} c — заданный класс.
+ */
 DOM.toggleClass = function(o, c) {
     return DOM.hasClass(o, c) ?
         DOM.removeClass(o, c) : DOM.addClass(o, c);
 };
 
+
+/**
+ * @description
+ * Удаляет обработчик события с текущего элемента.
+ *
+ * @param {object} element — текущий элемент.
+ * @param {string} type — название события.
+ * @param {function} handler — обработчик, который нужно удалить.
+ */
 function removeEventListener(element, type, handler) {
     var handlers = element.events && element.events[type];
     if (!handlers) {
@@ -429,11 +558,3 @@ function removeEventListener(element, type, handler) {
         element.removeAttribute('events');
     }
 }
-
-/**
- * TODO:
- *
- * 1) [Ready] по наведению курсора на определённое место в табло контрастным цветом выделяются соответствующие строка и столбец;
- * 2) сделайте так, чтобы по клику на соответствующую строчку в выплывающем окне показывались все данные рейса;
- *
- */
