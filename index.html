@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Табло Аэропорта</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,500,500italic,400italic,300,300italic,700,700italic&subset=latin,cyrillic">
+    <link type="text/css" rel="stylesheet" href="css/style.css?2">
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png?1">
+</head>
+<body>
+    <div class="page-root">
+        <div class="header-wrapper header-wrapper_position_fixed">
+            <div class="header">
+                <div class="header__row">
+                    <div class="header__logo">
+                        <a href="https://yandex.ru" class="link link_type_block">
+                            <img class="image header__logo-image" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MiIgaGVpZ2h0PSIzNCIgdmlld0JveD0iMCAwIDE2NDAgNjgwIj48cGF0aCBkPSJNNTU2IDIwMGgtNDdjLTQgMC02IDMtNiA1djE0NWgtODd2LTE0NWMwLTQtMi01LTUtNWgtNDdjLTQgMC02IDItNiA1djM2OGMwIDQgMiA2IDUgNmg0OGMzIDAgNS0yIDUtNnYtMTc2aDg3djE3NmMwIDQgMiA2IDYgNmg0N2M0IDAgNS0zIDUtNnYtMzY4YzAtMy0yLTUtNS01em0xMDY2IDMyOWMtMS0yLTItMy00LTMtNCAwLTI0IDgtNTQgOC01OCAwLTg2LTU1LTg2LTE0MyAwLTc3IDIzLTE1NCA2My0xNTQgMTEgMCAyMyAzIDQ0IDIyIDIgMiA0IDMgNiAzczUtMiA3LTVsMjAtMzNjMi0yIDItNSAyLTcgMC0zLTMtNS04LTgtMzEtMTYtNTItMTktNzAtMTktNzEgMC0xMjYgODUtMTI2IDIxNyAwIDExNCA1MyAxODAgMTI5IDE4MCAzMiAwIDY2LTE1IDgwLTI1IDMtMiA0LTUgMy04bC02LTI2em0tMzIzLTE1OGw5MS0xNjZjMi0yIDEtNS0yLTVoLTQ1Yy0xMyAwLTE3IDUtMjIgMTRsLTY4IDE0MmMtNCA4LTggMTQtMTEgMTZ2LTE2N2MwLTMtMi01LTUtNWgtNDljLTIgMC01IDItNSA1djM2OWMwIDIgMiA1IDUgNWg0OWMzIDAgNS0yIDUtNXYtMTkwYzIgMiA0IDQgNSA3bDg2IDE3N2M1IDkgMTEgMTEgMjEgMTFoNDhjMyAwIDQtMyAyLTVsLTEwNi0yMDN6bS00MzQgMTYxaC05Yy0xMSAwLTE0LTUtMTQtMTR2LTMxM2MwLTQtMi01LTUtNWgtMTUxYy00IDAtNiAyLTYgNXYyN2MwIDkyLTUgMjEwLTU0IDI5OWgtMTdjLTUgMC02IDItNiA2djExMWMwIDQgMyA1IDUgNWgzNmM4IDAgMTEtNiAxMS0xMXYtNjNoMTYydjY5YzAgMyAyIDUgNSA1aDM5YzUgMCA5LTQgOS0xMXYtMTA1YzAtNC0yLTYtNi02em0tODIgMGgtMTEwYzM5LTY2IDU0LTE0MCA1OS0yMzEgMi0yMCAyLTQwIDItNTNoNDh2Mjg0em0yMzYtMzQxYy04MiAwLTExOCAxMDMtMTE4IDIxNSAwIDExNCA1MiAxODMgMTI3IDE4MyAzNyAwIDcwLTE0IDg2LTI1IDMtMiA0LTQgMy03bC02LTI2Yy0xLTMtMi01LTYtNS0zIDAtMjUgOC01NiA4LTU4IDAtODYtNTEtODYtMTE3di0xOHMzMCA0IDQ3IDRoMTExdi0zMmMwLTExNy00Mi0xODAtMTAyLTE4MHptLTggMTY0Yy0xNyAwLTQ1IDMtNDUgM3MwLTExIDItMjNjNy02NCAyMy05NyA0OS05NyAyNCAwIDM5IDMzIDQzIDkyIDEgMTIgMSAyNiAxIDI2aC01MHoiLz48cGF0aCBmaWxsPSIjZjAwIiBkPSJNMjcxIDExaC04NmMtODUgMC0xNTcgNjQtMTU3IDE4OSAwIDc1IDM1IDEzMCA5NyAxNThsLTExNiAyMDljLTQgNyAwIDEyIDYgMTJoNTRjNSAwIDgtMiA5LTVsMTA1LTIwNWgzOHYyMDVjMCAyIDIgNSA1IDVoNDdjNSAwIDYtMiA2LTZ2LTU1NGMwLTUtMy04LTgtOHptLTUwIDMwOWgtMzJjLTUwIDAtOTgtMzYtOTgtMTI3IDAtOTUgNDUtMTMzIDkyLTEzM2gzOXYyNjB6Ii8+PC9zdmc+">
+                        </a>
+                    </div>
+                    <div class="header__name">
+                        <a href="./" class="link link_type_block header__name-link">
+                            <div class="service-name">
+                                <div class="service-name__container">
+                                    <div class="service-name__inner">Табло</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="header__links hide-ls-sm-2">
+                        <div class="header__link-list">
+                            <div class="header__link-item">
+                                <a class="link" target="_blank" href="https://github.com/IPRIT/yandex-shri-2015-tablo">GitHub</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="body-wrapper">
+            <div class="body">
+                <div class="body__inner">
+                    <div class="air-header component-block">
+                        <h1 class="title title_size_large title_size_normal-sm-1 title_size_small-sm-2 air-table__title">Табло аэропорта Домодедово (Москва)</h1>
+                        <div class="air-table__flight-types">
+                            <div class="checkbox-group checkbox-group_single-required air-table__checkbox-buttons">
+                                <label class="checkbox-button checkbox-button_bound_left air-table__checkbox-item checkbox-button_pressed" for="checkbox_departure">
+                                    <span class="checkbox-button__text">Вылет</span>
+                                    <input class="checkbox-button__input" type="checkbox" checked value="departures" id="checkbox_departure">
+                                </label>
+                                <label class="checkbox-button checkbox-button_bound_right air-table__checkbox-item checkbox-button_pressed" for="checkbox_arrival">
+                                    <span class="checkbox-button__text">Прилет</span>
+                                    <input class="checkbox-button__input" type="checkbox" checked value="arrivals" id="checkbox_arrival">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="air-table component-block">
+                        <div class="air-table__inner">
+                            <div class="air-table__sticky-header">
+                                <table class="table air-table__table air-table__sticky-table">
+                                    <tr class="air-table__row air-table__row_purpose_header air-table__sticky">
+                                        <td class="air-table__col air-table__col_purpose_title hide-ls-md-2">Тип рейса</td>
+                                        <td class="air-table__col air-table__col_purpose_title">
+                                            <span class="hide-ls-md-2">Номер рейса</span>
+                                            <span title="Номер рейса" class="show-ls-md-2">Рейс</span>
+                                        </td>
+                                        <td class="air-table__col air-table__col_purpose_title hide-ls-sm-1">
+                                            <span class="hide-ls-lg-2">Авиакомпания</span>
+                                            <span class="show-ls-lg-2">Компания</span>
+                                        </td>
+                                        <td class="air-table__col air-table__col_purpose_title">
+                                            <span class="hide-ls-md-2">Тип самолета</span>
+                                            <span class="show-ls-md-2 hide-ls-sm-2">Самолет</span>
+                                            <span class="show-ls-sm-2">Судно</span>
+                                        </td>
+                                        <td class="air-table__col air-table__col_purpose_title hide-ls-md-2">
+                                            <span class="hide-ls-md-2">Место назначения</span>
+                                            <span class="show-ls-md-2">Назначение</span>
+                                        </td>
+                                        <td class="air-table__col air-table__col_purpose_title checkbox-button air-table__time-sort" id="checkbox_change_time_sort">
+                                            <span class="hide-ls-lg-1">Плановое время вылета или прилёта</span>
+                                            <span class="show-ls-lg-1 hide-ls-md-1">Плановое время</span>
+                                            <span class="show-ls-md-1">Время</span>
+                                            <span class="icon air-table__arrow-icon"></span>
+                                        </td>
+                                        <td class="air-table__col air-table__col_purpose_title">Статус</td>
+                                        <td class="air-table__col air-table__col_purpose_title hide-ls-lg-1">Примечание</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <table class="table air-table__table">
+                                <tr class="air-table__row air-table__row_purpose_header">
+                                    <td class="air-table__col air-table__col_purpose_title hide-ls-md-2">Тип рейса</td>
+                                    <td class="air-table__col air-table__col_purpose_title">
+                                        <span class="hide-ls-md-2">Номер рейса</span>
+                                        <span title="Номер рейса" class="show-ls-md-2">Рейс</span>
+                                    </td>
+                                    <td class="air-table__col air-table__col_purpose_title hide-ls-sm-1">
+                                        <span class="hide-ls-md-2">Авиакомпания</span>
+                                        <span class="show-ls-md-2">Компания</span>
+                                    </td>
+                                    <td class="air-table__col air-table__col_purpose_title">
+                                        <span class="hide-ls-md-2">Тип самолета</span>
+                                        <span class="show-ls-md-2 hide-ls-sm-2">Самолет</span>
+                                        <span class="show-ls-sm-2">Судно</span>
+                                    </td>
+                                    <td class="air-table__col air-table__col_purpose_title hide-ls-md-2">
+                                        <span class="hide-ls-md-2">Место назначения</span>
+                                        <span class="show-ls-md-2">Назначение</span>
+                                    </td>
+                                    <!-- Возможно применять кнопки в заголовке таблицы -->
+                                    <td class="air-table__col air-table__col_purpose_title checkbox-button air-table__time-sort" id="checkbox_change_time_sort">
+                                        <span class="hide-ls-lg-1">Плановое время вылета или прилёта</span>
+                                        <span class="show-ls-lg-1 hide-ls-md-1">Плановое время</span>
+                                        <span class="show-ls-md-1">Время</span>
+                                        <span class="icon air-table__arrow-icon"></span>
+                                    </td>
+                                    <td class="air-table__col air-table__col_purpose_title">Статус</td>
+                                    <td class="air-table__col air-table__col_purpose_title hide-ls-lg-1">Примечание</td>
+                                </tr>
+                                <!-- :) -->
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-layout">
+            <div class="footer-layout__item">
+                <span class="text">Все данные взяты из </span>
+                <a class="link" target="_blank" href="https://rasp.yandex.ru/">Яндекс.Расписания</a>
+            </div>
+        </div>
+    </div>
+    <div class="overlay overlay_theme_black overlay_visibility_hidden">
+        <div class="overlay__content">
+            <div class="popup component-block flight-info">
+                <div onclick="event.cancelBubble = true;" class="popup__body flight-info__body">
+                    <div class="flight-info__content">
+                        <h1 class="title title_size_large title_size_normal-sm-1 title_size_small-sm-2 flight-info__title"></h1>
+                        <div class="flight-info__way"></div>
+                        <div class="flight-info__information">
+                            <div class="flight-info__info-title">Информация</div>
+                            <div class="flight-info__type">
+                                <span class="flight-info__type-title">Тип рейса: </span>
+                                <span class="flight-info__type-text"></span>
+                            </div>
+                            <div class="flight-info__time">
+                                <span class="flight-info__time-title">Вылет в </span>
+                                <span class="flight-info__time-text"></span>
+                            </div>
+                            <div class="flight-info__status">
+                                <span class="flight-info__status-label">Статус рейса: </span>
+                                <span title="" class="flight-info__status-circle">
+                                    <span class="air-table__status air-table__status_role_success"></span>
+                                </span>
+                                <span class="flight-info__status-text"></span>
+                            </div>
+                            <div class="flight-info__note">
+                                <span>Примечание: </span>
+                                <div class="flight-info__note-content"></div>
+                            </div>
+                        </div>
+                        <div class="flight-info__information">
+                            <div class="flight-info__info-title">Компания</div>
+                            <div class="flight-info__company">
+                                <a class="link link_type_block flight-info__company-link" target="_blank" href="#">
+                                    <div class="flight-info__company-logo">
+                                        <img class="image" src="//yandex.st/rasp/media/data/company/logo/ural_airlines.png">
+                                    </div>
+                                    <div class="flight-info__company-name"></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/data.js?4"></script>
+    <script type="text/javascript" src="js/app.js?301"></script>
+</body>
+</html>
