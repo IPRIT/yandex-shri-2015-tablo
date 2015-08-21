@@ -1,39 +1,39 @@
 document.addEventListener('DOMContentLoaded', function() {
-    AeroTable.fillTable(Airport.Domodedovo.data);
+    AirTable.fillTable(Airport.Domodedovo.data);
 
-    var table = document.querySelector('.aero-table__table:not(.aero-table__sticky-table)'),
-        checkboxSelection = document.querySelectorAll('.aero-table__checkbox-item');
-    table.addEventListener('mouseleave', AeroTable.onMouseLeave.bind(AeroTable));
+    var table = document.querySelector('.air-table__table:not(.air-table__sticky-table)'),
+        checkboxSelection = document.querySelectorAll('.air-table__checkbox-item');
+    table.addEventListener('mouseleave', AirTable.onMouseLeave.bind(AirTable));
     for (var el = 0; el < checkboxSelection.length; ++el) {
-        checkboxSelection[el].addEventListener('change', AeroTable.onTypeChanged.bind(AeroTable));
+        checkboxSelection[el].addEventListener('change', AirTable.onTypeChanged.bind(AirTable));
     }
 
-    var tableHeaderCheckboxes = document.querySelectorAll('.aero-table__col.checkbox-button');
+    var tableHeaderCheckboxes = document.querySelectorAll('.air-table__col.checkbox-button');
     for (el = 0; el < tableHeaderCheckboxes.length; ++el) {
-        tableHeaderCheckboxes[el].addEventListener('click', AeroTable.onHeaderClick.bind(AeroTable));
+        tableHeaderCheckboxes[el].addEventListener('click', AirTable.onHeaderClick.bind(AirTable));
     }
 
-    var tableCells = document.querySelectorAll('.aero-table__col');
+    var tableCells = document.querySelectorAll('.air-table__col');
     for (el = 0; el < tableCells.length; ++el) {
-        tableCells[el].addEventListener('mouseover', AeroTable.onCellHovered.bind(AeroTable));
+        tableCells[el].addEventListener('mouseover', AirTable.onCellHovered.bind(AirTable));
     }
 
-    [].forEach.call(document.querySelectorAll('.aero-table__row'), function(row) {
-        row.addEventListener('click', AeroTable.onRowClick.bind(AeroTable));
+    [].forEach.call(document.querySelectorAll('.air-table__row'), function(row) {
+        row.addEventListener('click', AirTable.onRowClick.bind(AirTable));
     });
-    [].forEach.call(document.querySelectorAll('.aero-table__company'), function(element) {
+    [].forEach.call(document.querySelectorAll('.air-table__company'), function(element) {
         element.addEventListener('click', function(e) {
             e.cancelBubble = true;
         });
     });
 
-    document.addEventListener('scroll', AeroTable.onWindowScroll.bind(AeroTable));
-    window.addEventListener('resize', AeroTable.onBodyResize.bind(AeroTable));
+    document.addEventListener('scroll', AirTable.onWindowScroll.bind(AirTable));
+    window.addEventListener('resize', AirTable.onBodyResize.bind(AirTable));
 
-    AeroTable.refreshTableRows();
+    AirTable.refreshTableRows();
 });
 
-var AeroTable = AeroTable || {};
+var AirTable = AirTable || {};
 
 
 /**
@@ -42,7 +42,7 @@ var AeroTable = AeroTable || {};
  *
  * @param {object} e
  */
-AeroTable.onTypeChanged = function(e) {
+AirTable.onTypeChanged = function(e) {
     if (!e || !e.target) {
         return;
     }
@@ -50,7 +50,7 @@ AeroTable.onTypeChanged = function(e) {
         type = curCheckbox.value,
         checked = curCheckbox.checked,
         selectedCheckboxes = document.querySelectorAll(
-            '.aero-table__checkbox-item .checkbox-button__input:checked'
+            '.air-table__checkbox-item .checkbox-button__input:checked'
         );
     if (!selectedCheckboxes.length
         && DOM.hasClass(curCheckbox.parentNode.parentNode, 'checkbox-group_single-required')) {
@@ -74,11 +74,11 @@ AeroTable.onTypeChanged = function(e) {
  * @param {boolean} show — показать/скрыть.
  * @param {object} parent — чекбокс.
  */
-AeroTable.toggleArrivals = function(show, parent) {
+AirTable.toggleArrivals = function(show, parent) {
     show ? DOM.addClass(parent, 'checkbox-button_pressed') :
         DOM.removeClass(parent, 'checkbox-button_pressed');
 
-    this.toggleRows('.aero-table__row_flight-type_arrival');
+    this.toggleRows('.air-table__row_flight-type_arrival');
 };
 
 
@@ -89,11 +89,11 @@ AeroTable.toggleArrivals = function(show, parent) {
  * @param {boolean} show — показать/скрыть.
  * @param {object} parent — чекбокс.
  */
-AeroTable.toggleDepartures = function(show, parent) {
+AirTable.toggleDepartures = function(show, parent) {
     show ? DOM.addClass(parent, 'checkbox-button_pressed') :
         DOM.removeClass(parent, 'checkbox-button_pressed');
 
-    this.toggleRows('.aero-table__row_flight-type_departure');
+    this.toggleRows('.air-table__row_flight-type_departure');
 };
 
 
@@ -103,17 +103,17 @@ AeroTable.toggleDepartures = function(show, parent) {
  *
  * @param {string} rowSelector — селектор строк.
  */
-AeroTable.toggleRows = function(rowSelector) {
+AirTable.toggleRows = function(rowSelector) {
     var curRows = document.querySelectorAll(rowSelector);
     for (var i = 0; i < curRows.length; ++i) {
-        if (DOM.hasClass(curRows[i], 'aero-table__row_animate_hidden')) {
-            DOM.removeClass(curRows[i], 'aero-table__row_hidden');
+        if (DOM.hasClass(curRows[i], 'air-table__row_animate_hidden')) {
+            DOM.removeClass(curRows[i], 'air-table__row_hidden');
         }
-        DOM.toggleClass(curRows[i], 'aero-table__row_animate_hidden');
+        DOM.toggleClass(curRows[i], 'air-table__row_animate_hidden');
         (function(element) {
             setTimeout(function() {
-                if (DOM.hasClass(element, 'aero-table__row_animate_hidden')) {
-                    DOM.addClass(element, 'aero-table__row_hidden');
+                if (DOM.hasClass(element, 'air-table__row_animate_hidden')) {
+                    DOM.addClass(element, 'air-table__row_hidden');
                 }
             }, 150);
         })(curRows[i]);
@@ -126,16 +126,16 @@ AeroTable.toggleRows = function(rowSelector) {
  * @description
  * Перекрашивает видимые нечетные строки таблицы.
  */
-AeroTable.refreshTableRows = function() {
-    var shadyRows = document.querySelectorAll('.aero-table__row.aero-table__row_bg_shady');
+AirTable.refreshTableRows = function() {
+    var shadyRows = document.querySelectorAll('.air-table__row.air-table__row_bg_shady');
     for (var index = 0; index < shadyRows.length; ++index) {
-        DOM.removeClass(shadyRows[index], 'aero-table__row_bg_shady');
+        DOM.removeClass(shadyRows[index], 'air-table__row_bg_shady');
     }
     var visibleTableRows = document.querySelectorAll(
-        '.aero-table__row:not(.aero-table__row_animate_hidden):not(.aero-table__row_purpose_header)'
+        '.air-table__row:not(.air-table__row_animate_hidden):not(.air-table__row_purpose_header)'
     );
     for (index = 1; index < visibleTableRows.length; index += 2) {
-        DOM.addClass(visibleTableRows[index], 'aero-table__row_bg_shady');
+        DOM.addClass(visibleTableRows[index], 'air-table__row_bg_shady');
     }
 };
 
@@ -146,7 +146,7 @@ AeroTable.refreshTableRows = function() {
  *
  * @param {object} e
  */
-AeroTable.onHeaderClick = function(e) {
+AirTable.onHeaderClick = function(e) {
     if (!e || !e.target) {
         return;
     }
@@ -156,7 +156,7 @@ AeroTable.onHeaderClick = function(e) {
     }
     switch (eventTargetNode.id) {
         case 'checkbox_change_time_sort':
-            var headerCheckboxes = document.querySelectorAll('.aero-table__time-sort');
+            var headerCheckboxes = document.querySelectorAll('.air-table__time-sort');
             [].forEach.call(headerCheckboxes, function(element) {
                 DOM.toggleClass(element, 'checkbox-button_pressed');
             });
@@ -172,12 +172,12 @@ AeroTable.onHeaderClick = function(e) {
  *
  * @param {object} e
  */
-AeroTable.onWindowScroll = function(e) {
+AirTable.onWindowScroll = function(e) {
     var scrollTop = document.body.scrollTop,
         headerMenuWrapper = document.querySelector('.header-wrapper'),
         headerMenuWrapperHeight = headerMenuWrapper.offsetHeight,
-        headerTableRow = document.querySelector('.aero-table__row_purpose_header:not(.aero-table__sticky)'),
-        stickyHeader = document.querySelector('.aero-table__sticky-header');
+        headerTableRow = document.querySelector('.air-table__row_purpose_header:not(.air-table__sticky)'),
+        stickyHeader = document.querySelector('.air-table__sticky-header');
 
     function getOffset(node) {
         var box = { top: 0, left: 0 };
@@ -192,13 +192,13 @@ AeroTable.onWindowScroll = function(e) {
 
     var tableOffsetTop = getOffset(headerTableRow).top;
     if (scrollTop > tableOffsetTop - headerMenuWrapperHeight) {
-        DOM.addClass(stickyHeader, 'aero-table__sticky-header_fixed');
+        DOM.addClass(stickyHeader, 'air-table__sticky-header_fixed');
         stickyHeader.style.top = (headerMenuWrapperHeight - 1) + 'px';
         stickyHeader.style.width = (
             Math.max(headerTableRow.offsetWidth, headerTableRow.clientWidth) + 1
         ) + 'px';
     } else {
-        DOM.removeClass(stickyHeader, 'aero-table__sticky-header_fixed');
+        DOM.removeClass(stickyHeader, 'air-table__sticky-header_fixed');
     }
 };
 
@@ -210,9 +210,9 @@ AeroTable.onWindowScroll = function(e) {
  *
  * @param {object} e
  */
-AeroTable.onBodyResize = function(e) {
-    var headerTableRow = document.querySelector('.aero-table__row_purpose_header:not(.aero-table__sticky)'),
-        stickyHeader = document.querySelector('.aero-table__sticky-header');
+AirTable.onBodyResize = function(e) {
+    var headerTableRow = document.querySelector('.air-table__row_purpose_header:not(.air-table__sticky)'),
+        stickyHeader = document.querySelector('.air-table__sticky-header');
     stickyHeader.style.width = (
         Math.max(headerTableRow.offsetWidth, headerTableRow.clientWidth) + 1
     ) + 'px';
@@ -231,9 +231,9 @@ AeroTable.onBodyResize = function(e) {
  *
  * @param {object} e
  */
-AeroTable.onCellHovered = function(e) {
+AirTable.onCellHovered = function(e) {
     var target = e.target;
-    while (!DOM.hasClass(target, 'aero-table__col')) {
+    while (!DOM.hasClass(target, 'air-table__col')) {
         target = target.parentNode;
     }
     var collection = target.parentNode.childNodes,
@@ -242,14 +242,14 @@ AeroTable.onCellHovered = function(e) {
         if (collection[i] == target) {
             break;
         }
-        DOM.hasClass(collection[i], 'aero-table__col') && ++index;
+        DOM.hasClass(collection[i], 'air-table__col') && ++index;
     }
     if (!index) {
         return;
     }
-    var classNamePlaceholder = 'aero-table__table-hovered_num_',
-        table = document.querySelector('.aero-table__table:not(.aero-table__sticky-table)'),
-        matchedIndex = table.className.match(/aero-table__table-hovered_num_(\d+)/i);
+    var classNamePlaceholder = 'air-table__table-hovered_num_',
+        table = document.querySelector('.air-table__table:not(.air-table__sticky-table)'),
+        matchedIndex = table.className.match(/air-table__table-hovered_num_(\d+)/i);
     if (matchedIndex && matchedIndex[1] != index) {
         DOM.removeClass(table, classNamePlaceholder + matchedIndex[1]);
     }
@@ -263,10 +263,10 @@ AeroTable.onCellHovered = function(e) {
  *
  * @param {object} e
  */
-AeroTable.onMouseLeave = function(e) {
+AirTable.onMouseLeave = function(e) {
     var table = e.target;
-    var classNamePlaceholder = 'aero-table__table-hovered_num_',
-        matchedIndex = table.className.match(/aero-table__table-hovered_num_(\d+)/i);
+    var classNamePlaceholder = 'air-table__table-hovered_num_',
+        matchedIndex = table.className.match(/air-table__table-hovered_num_(\d+)/i);
     if (matchedIndex && matchedIndex[1]) {
         DOM.removeClass(table, classNamePlaceholder + matchedIndex[1]);
     }
@@ -280,10 +280,10 @@ AeroTable.onMouseLeave = function(e) {
  *
  * @param {object} e
  */
-AeroTable.onRowClick = function(e) {
+AirTable.onRowClick = function(e) {
     var dataList = Airport.Domodedovo.data,
         targetRow = e.target;
-    while (!DOM.hasClass(targetRow, 'aero-table__row')) {
+    while (!DOM.hasClass(targetRow, 'air-table__row')) {
         targetRow = targetRow.parentNode;
     }
 
@@ -328,16 +328,16 @@ AeroTable.onRowClick = function(e) {
     flightStatusCircle.title = flightData.status.text;
 
     var statusCircle = flightStatusCircle.getElementsByTagName('span')[0],
-        matchedPresence = statusCircle.className.match(/\s?aero-table__status_role_(success|freeze|failed)\s?/i),
-        statusClassPlaceholder = 'aero-table__status_role_';
+        matchedPresence = statusCircle.className.match(/\s?air-table__status_role_(success|freeze|failed)\s?/i),
+        statusClassPlaceholder = 'air-table__status_role_';
     if (matchedPresence) {
         DOM.removeClass(statusCircle, statusClassPlaceholder + matchedPresence[1]);
     }
     var statusClassName,
         classList = [
-            'aero-table__status_role_success',
-            'aero-table__status_role_freeze',
-            'aero-table__status_role_failed'
+            'air-table__status_role_success',
+            'air-table__status_role_freeze',
+            'air-table__status_role_failed'
         ],
         linkage = {
             departure: [0, 1, 0, 0],
@@ -366,16 +366,16 @@ AeroTable.onRowClick = function(e) {
  *
  * @param {object[]} dataList — массив данных с информацией о рейсах.
  */
-AeroTable.fillTable = function(dataList) {
+AirTable.fillTable = function(dataList) {
     if (!Array.isArray(dataList)) {
         return;
     }
-    var container = document.querySelector('.aero-table__table:not(.aero-table__sticky-table)'),
-        rowHtml   = '<tr class="aero-table__row aero-table__row_flight-type_{{dir_type}}" data-id="{{id}}">' +
-                        '<td class="aero-table__col hide-ls-md-2">' +
+    var container = document.querySelector('.air-table__table:not(.air-table__sticky-table)'),
+        rowHtml   = '<tr class="air-table__row air-table__row_flight-type_{{dir_type}}" data-id="{{id}}">' +
+                        '<td class="air-table__col hide-ls-md-2">' +
                             '{{dir}}' +
                         '</td>' +
-                        '<td class="aero-table__col">' +
+                        '<td class="air-table__col">' +
                             '<span class="hide-ls-md-2">{{flight}}</span>' +
                             '<span class="show-ls-md-2">' +
                                 '{{flight}}' +
@@ -384,45 +384,45 @@ AeroTable.fillTable = function(dataList) {
                                 '{{destination}}' +
                             '</span>' +
                         '</td>' +
-                        '<td class="aero-table__col hide-ls-sm-1">' +
-                            '<div onclick="event.cancelBubble = true;" class="aero-table__col-inner aero-table__company">' +
+                        '<td class="air-table__col hide-ls-sm-1">' +
+                            '<div onclick="event.cancelBubble = true;" class="air-table__col-inner air-table__company">' +
                                 '<a class="link link_type_block" target="_blank" href="{{company_url}}">' +
-                                    '<div class="aero-table__company-logo hide-ls-lg-1">' +
+                                    '<div class="air-table__company-logo hide-ls-lg-1">' +
                                         '<img class="image" src="{{company_logo_max}}">' +
                                     '</div>' +
-                                    '<div class="aero-table__company-logo aero-table__company-logo_size_quad show-ls-lg-1 hide-ls-md-2">' +
+                                    '<div class="air-table__company-logo air-table__company-logo_size_quad show-ls-lg-1 hide-ls-md-2">' +
                                         '<img class="image" src="{{company_logo_quad}}">' +
                                     '</div>' +
-                                    '<div class="aero-table__company-name">{{company_name}}</div>' +
+                                    '<div class="air-table__company-name">{{company_name}}</div>' +
                                 '</a>' +
                             '</div>' +
                         '</td>' +
-                        '<td class="aero-table__col">' +
+                        '<td class="air-table__col">' +
                             '<span class="hide-ls-sm-1">{{plane_model}}</span>' +
                             '<span title="{{plane_model}}" class="show-ls-sm-1 hide-ls-sm-2">{{plane_model_short}}</span>' +
                             '<span title="{{plane_model}}" class="show-ls-sm-2">{{plane_model_short}}</span>' +
                         '</td>' +
-                        '<td class="aero-table__col hide-ls-md-2">{{destination}}</td>' +
-                        '<td class="aero-table__col">' +
+                        '<td class="air-table__col hide-ls-md-2">{{destination}}</td>' +
+                        '<td class="air-table__col">' +
                             '<span class="hide-ls-sm-1">{{destination_time}}</span>' +
                             '<span title="{{destination_time}}" class="show-ls-sm-1 hide-ls-sm-2">{{destination_time_short}}</span>' +
                             '<span title="{{destination_time}}" class="show-ls-sm-2">{{destination_time_shortest}}</span>' +
                         '</td>' +
-                        '<td class="aero-table__col">' +
+                        '<td class="air-table__col">' +
                             '<span class="hide-ls-sm-2">{{status}}</span>' +
                             '<span title="{{status}}" class="show-ls-sm-2">' +
-                                '<span class="aero-table__status {{status_circle_classname}}"></span>' +
+                                '<span class="air-table__status {{status_circle_classname}}"></span>' +
                             '</span>' +
                         '</td>' +
-                        '<td class="aero-table__col hide-ls-lg-1">{{note}}</td>' +
+                        '<td class="air-table__col hide-ls-lg-1">{{note}}</td>' +
                     '</tr>';
 
     function prepareHtml(data) {
         var statusClassName,
             classList = [
-                'aero-table__status_role_success',
-                'aero-table__status_role_freeze',
-                'aero-table__status_role_failed'
+                'air-table__status_role_success',
+                'air-table__status_role_freeze',
+                'air-table__status_role_failed'
             ],
             linkage = {
                 departure: [0, 1, 0, 0],
